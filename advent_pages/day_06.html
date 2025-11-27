@@ -5,9 +5,8 @@
 <title>Day 6 - Saturday – Advent Calendar</title>
 <style>
 body { font-family: Arial, sans-serif; background: linear-gradient(180deg,#fdf7f2,#f3f0ff); color: #1f2937; }
-.header { background: #b91c1c; color: #fff; text-align: center; }
-.header img.banner { width: 100%; max-width: 1200px; height: auto; display: block; margin: 0 auto; }
-.header .holiday-banner { display:flex; justify-content:center; gap:14px; margin: 8px 0 16px; }
+.header { background: #b91c1c; color: #fff; text-align: center; padding-bottom: 8px; }
+.header .holiday-banner { display:flex; justify-content:center; gap:14px; margin: 8px 0 8px; }
 .header .holiday-banner img { vertical-align: middle; }
 .container { max-width: 820px; margin: 24px auto; padding: 24px; background: #ffffffcf; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1);} 
 h1 { margin: 10px 0 0; font-size: 28px; }
@@ -18,9 +17,6 @@ p.meta { color: #6b7280; font-size: 0.95em; }
 footer { margin-top: 24px; color: #6b7280; font-size: 0.9em; text-align:center; }
 button { margin-top: 12px; padding: 10px 14px; background: #b00020; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
 #answer { display: none; margin-top: 10px; font-weight: bold; color: #111827; }
-.index-list { columns: 2; column-gap: 24px; }
-.index-list li { break-inside: avoid; margin-bottom: 10px; }
-.back { display:block; margin-top:12px; color:#1f2937; }
 </style>
 <script>
 function showAnswer() {
@@ -30,7 +26,6 @@ function showAnswer() {
 </head>
 <body>
 <div class='header'>
-  <img src='assets/header_banner.png' alt='Elam Family Advent Banner' class='banner'/>
   <div class='holiday-banner'>
     <img src='assets/lights.svg' alt='lights' width='48' height='48'/>
     <img src='assets/tree.svg' alt='tree' width='48' height='48'/>
@@ -49,7 +44,6 @@ function showAnswer() {
   <h2>Your Surprise</h2>
   <p>Open the link below to enjoy today’s activity:</p>
   <a class='btn' href='https://www.youtube.com/watch?v=E8gmARGvPlI' target='_blank' rel='noopener'>Open Surprise</a>
-  <a class='back' href='index.html'>&larr; Back to Index</a>
   <footer>© Advent Calendar 2025</footer>
 </div>
 </body>
