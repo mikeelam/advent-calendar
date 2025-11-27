@@ -12,7 +12,14 @@ h2 { color: #0a6b2b; }
 a.btn { display: inline-block; margin-top: 16px; padding: 12px 16px; background: #0a6b2b; color: #fff; text-decoration: none; border-radius: 8px; }
 p.meta { color: #666; font-size: 0.95em; }
 footer { margin-top: 24px; color: #666; font-size: 0.9em; }
+button { margin-top: 12px; padding: 10px 14px; background: #b00020; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+#answer { display: none; margin-top: 10px; font-weight: bold; color: #333; }
 </style>
+<script>
+function showAnswer() {
+  document.getElementById('answer').style.display = 'block';
+}
+</script>
 </head>
 <body>
 <div class='container'>
@@ -22,6 +29,8 @@ footer { margin-top: 24px; color: #666; font-size: 0.9em; }
   <div class='box'>Get taken to school in the morning</div>
   <h2>Riddle</h2>
   <div class='box'>What do you build with snow?</div>
+  <button onclick='showAnswer()'>Show Answer</button>
+  <div id='answer'>Answer: Snowman</div>
   <h2>Your Surprise</h2>
   <p>Open the link below to enjoy today’s activity:</p>
   <a class='btn' href='https://www.youtube.com/watch?v=E8gmARGvPlI' target='_blank' rel='noopener'>Open Surprise</a>
