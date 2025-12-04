@@ -2,44 +2,28 @@
 <html>
 <head>
 <meta charset='utf-8'>
-<title>Day 20 - Saturday – Advent Calendar</title>
+<title>Day 20 - Saturday</title>
 <style>
 body { font-family: Arial, sans-serif; background: linear-gradient(180deg,#fdf7f2,#f3f0ff); color: #1f2937; }
 .header { background: #b91c1c; color: #fff; text-align: center; padding-bottom: 8px; }
-.header .holiday-banner { display:flex; justify-content:center; gap:14px; margin: 8px 0 8px; }
-.header .holiday-banner img { vertical-align: middle; }
 .container { max-width: 820px; margin: 24px auto; padding: 24px; background: #ffffffcf; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1);} 
 h1 { margin: 10px 0 0; font-size: 28px; }
 h2 { color: #0a6b2b; margin-top: 18px; }
 .box { border: 2px dashed #d1d5db; padding: 16px; border-radius: 12px; background:#fff; }
 a.btn { display: inline-block; margin-top: 16px; padding: 12px 16px; background: #0a6b2b; color: #fff; text-decoration: none; border-radius: 10px; }
-p.meta { color: #6b7280; font-size: 0.95em; }
-footer { margin-top: 24px; color: #6b7280; font-size: 0.9em; text-align:center; }
 button { margin-top: 12px; padding: 10px 14px; background: #b00020; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
 #answer { display: none; margin-top: 10px; font-weight: bold; color: #111827; }
 </style>
-<script>
-function showAnswer() {
-  document.getElementById('answer').style.display = 'block';
-}
-</script>
+<script>function showAnswer() { document.getElementById('answer').style.display = 'block'; }</script>
 </head>
 <body>
 <script src='js/snow.js'></script>
-<div class='header'>
-  <div class='holiday-banner'>
-    <img src='assets/lights.svg' alt='lights' width='48' height='48'/>
-    <img src='assets/tree.svg' alt='tree' width='48' height='48'/>
-    <img src='assets/snowflake.svg' alt='snowflake' width='48' height='48'/>
-  </div>
-  <h1>Day 20 - Saturday</h1>
-</div>
+<div class='header'><h1>Day 20 - Saturday</h1></div>
 <div class='container'>
-  <p class='meta'><strong>Saturday</strong></p>
   <h2>Reward</h2>
-  <div class='box'>Skip dog poop pickup</div>
+  <div class='box'>Skip dog poop Chore</div>
   <h2>Riddle</h2>
-  <div class='box'>What do you sing during Christmas?</div>
+  <div class='box'>Words you sing that travel door to door, yet carry no postage. What are they?</div>
   <button onclick='showAnswer()'>Show Answer</button>
   <div id='answer'>Answer: Carols</div>
   <h2>Your Surprise</h2>
