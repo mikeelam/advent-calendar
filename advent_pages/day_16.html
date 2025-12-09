@@ -1,36 +1,123 @@
-
-<html>
-<head>
-<meta charset='utf-8'>
-<title>Day 16 - Tuesday - School Night</title>
-<style>
-body { font-family: Arial, sans-serif; background: linear-gradient(180deg,#fdf7f2,#f3f0ff); color: #1f2937; }
-.header { background: #b91c1c; color: #fff; text-align: center; }
-.header img.banner { width: 100%; max-width: 1200px; height: auto; display: block; margin: 0 auto; }
-.container { max-width: 820px; margin: 24px auto; padding: 24px; background: #ffffffcf; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1);} 
-h1 { margin: 10px 0 0; font-size: 28px; }
-h2 { color: #0a6b2b; margin-top: 18px; }
-.box { border: 2px dashed #d1d5db; padding: 16px; border-radius: 12px; background:#fff; }
-a.btn { display: inline-block; margin-top: 16px; padding: 12px 16px; background: #0a6b2b; color: #fff; text-decoration: none; border-radius: 10px; }
-button { margin-top: 12px; padding: 10px 14px; background: #b00020; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
-#answer { display: none; margin-top: 10px; font-weight: bold; color: #111827; }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elam Family Advent Banner — Day 16</title>
+    <style>
+:root{--bg1:#0b1c2c;--bg2:#143d5b;--card:#102a43;--text:#e6f1ff;--accent:#ffc857;--link:#64ffda}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans",sans-serif;color:var(--text);
+  background:radial-gradient(1200px 600px at 20% 0%, #1b2845 0%, var(--bg1) 30%),
+             radial-gradient(900px 500px at 80% 20%, #274060 0%, var(--bg2) 40%),
+             linear-gradient(180deg,var(--bg1),var(--bg2));
+  min-height:100vh;overflow-x:hidden}
+header{padding:24px 16px;text-align:center}
+header h1{margin:0;font-size:2rem}
+main{max-width:1000px;margin:0 auto;padding:16px;position:relative;z-index:2}
+section{background:rgba(16,42,67,.85);backdrop-filter:saturate(1.2) blur(2px);border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+section h2{margin-top:0;color:var(--accent)}
+.button{display:inline-block;background:var(--accent);color:#1a1a1a;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:600}
+.button:hover{filter:brightness(1.1)}
+footer{padding:24px;text-align:center;opacity:.8}
+#answer{margin-top:8px}
+.toggle{background:transparent;border:2px solid var(--accent);color:var(--accent);padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600}
+.toggle[disabled]{opacity:.5;cursor:not-allowed}
+/* Garland lights */
+.garland{position:fixed;top:0;left:0;width:100%;height:70px;pointer-events:none;z-index:1}
+.garland:before,.garland:after{content:"";position:absolute;left:0;right:0;height:70px;background:radial-gradient(circle at 5% 50%, #ff6b6b 4px, transparent 6px),
+  radial-gradient(circle at 10% 40%, #ffd93d 4px, transparent 6px),
+  radial-gradient(circle at 15% 60%, #6bffb3 4px, transparent 6px),
+  radial-gradient(circle at 20% 45%, #64ffda 4px, transparent 6px),
+  radial-gradient(circle at 25% 55%, #ff6b6b 4px, transparent 6px),
+  radial-gradient(circle at 30% 40%, #ffd93d 4px, transparent 6px),
+  radial-gradient(circle at 35% 60%, #6bffb3 4px, transparent 6px),
+  radial-gradient(circle at 40% 50%, #64ffda 4px, transparent 6px),
+  radial-gradient(circle at 45% 40%, #ff6b6b 4px, transparent 6px),
+  radial-gradient(circle at 50% 55%, #ffd93d 4px, transparent 6px),
+  radial-gradient(circle at 55% 45%, #6bffb3 4px, transparent 6px),
+  radial-gradient(circle at 60% 60%, #64ffda 4px, transparent 6px),
+  radial-gradient(circle at 65% 50%, #ff6b6b 4px, transparent 6px),
+  radial-gradient(circle at 70% 40%, #ffd93d 4px, transparent 6px),
+  radial-gradient(circle at 75% 60%, #6bffb3 4px, transparent 6px),
+  radial-gradient(circle at 80% 45%, #64ffda 4px, transparent 6px),
+  radial-gradient(circle at 85% 55%, #ff6b6b 4px, transparent 6px),
+  radial-gradient(circle at 90% 40%, #ffd93d 4px, transparent 6px),
+  radial-gradient(circle at 95% 60%, #6bffb3 4px, transparent 6px);
+  opacity:.75;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
+/* Falling snow */
+.snow{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.flake{position:absolute;top:-10px;width:8px;height:8px;border-radius:50%;background:#ffffff;opacity:.9;filter:blur(.5px);animation-name:fall, sway;animation-duration:var(--dur), var(--swayDur);animation-timing-function:linear, ease-in-out;animation-iteration-count:infinite, infinite;animation-delay:var(--delay), var(--swayDelay)}
+@keyframes fall{to{transform:translateY(110vh)}}
+@keyframes sway{0%{margin-left:0}50%{margin-left:var(--sway)}100%{margin-left:0}}
+/* Index grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:16px}
+.tile{background:rgba(16,42,67,.85);border-radius:12px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.35);display:flex;flex-direction:column;justify-content:space-between}
+.tile h2{margin:0 0 8px;color:var(--accent)}
+.tile p{margin:4px 0}
+.tile .actions{margin-top:12px}
 </style>
-<script>function showAnswer(){document.getElementById('answer').style.display='block';}</script>
-</head>
-<body>
-<script src='js/snow.js'></script>
-<div class='header'><img src='assets/header_banner.png' class='banner' alt='Elam Family Advent Banner'/><h1>Day 16 - Tuesday - School Night</h1></div>
-<div class='container'>
-  <h2>Reward</h2>
-  <div class='box'>Stay up 30 min late</div>
-  <h2>Riddle</h2>
-  <div class='box'>I color suits and noses, but I’m no emotion. What am I?</div>
-  <button onclick='showAnswer()'>Show Answer</button>
-  <div id='answer'>Answer: Red</div>
-  <h2>Your Surprise</h2>
-  <p>Open the link below to enjoy today’s activity:</p>
-  <a class='btn' href='https://www.youtube.com/watch?v=E8gmARGvPlI' target='_blank' rel='noopener'>Open Surprise</a>
-  <footer>© Advent Calendar 2025</footer>
-</div>
-</body>
+  </head>
+  <body>
+    <div class="garland"></div>
+    <div class="snow"></div>
+    <header>
+      <h1>Day 16 — Tuesday - School Night</h1>
+    </header>
+    <main>
+      <section class="reward">
+        <h2>Reward</h2>
+        <p>Stay up 30 min late</p>
+      </section>
+      <section class="riddle">
+        <h2>Riddle</h2>
+        <p>I color suits and noses, but I’m no emotion. What am I?</p>
+        <button id="toggle-answer" class="toggle" type="button">Show Answer</button>
+        <p id="answer" hidden>Suggested Answer: Red</p>
+      </section>
+      <section class="surprise">
+        <h2>Your Surprise</h2>
+        <p>Open the link below to enjoy today’s activity:</p>
+        <p><a class="button" href="https://artsandculture.google.com/project/holidays" target="_blank" rel="noopener noreferrer">Open Surprise</a></p>
+      </section>
+      <footer>© Advent Calendar 2025</footer>
+    </main>
+    <script>
+(function(){
+  // Answer toggle
+  const btn = document.getElementById('toggle-answer');
+  const ans = document.getElementById('answer');
+  if(btn && ans){
+    if(ans.textContent.trim().length === 0){
+      btn.style.display = 'none';
+    } else {
+      btn.addEventListener('click', function(){
+        const hidden = ans.hasAttribute('hidden');
+        if(hidden){ ans.removeAttribute('hidden'); btn.textContent = 'Hide Answer'; }
+        else{ ans.setAttribute('hidden',''); btn.textContent = 'Show Answer'; }
+      });
+    }
+  }
+  // Generate snowflakes
+  const snow = document.querySelector('.snow');
+  if(snow){
+    const count = 80;
+    for(let i=0;i<count;i++){
+      const f = document.createElement('div');
+      f.className = 'flake';
+      const size = Math.random()*6+2;
+      f.style.width = size+'px';
+      f.style.height = size+'px';
+      f.style.left = Math.random()*100+'%';
+      f.style.setProperty('--dur', (6+Math.random()*10)+'s');
+      f.style.setProperty('--delay', (Math.random()*5)+'s');
+      f.style.setProperty('--sway', (Math.random()*40-20)+'px');
+      f.style.setProperty('--swayDur', (4+Math.random()*6)+'s');
+      f.style.setProperty('--swayDelay', (Math.random()*3)+'s');
+      snow.appendChild(f);
+    }
+  }
+})();
+</script>
+  </body>
 </html>

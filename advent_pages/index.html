@@ -1,41 +1,326 @@
-<html><head><meta charset='utf-8'><title>Advent Calendar</title>
-<style>
-body { font-family: Arial, sans-serif; background: linear-gradient(180deg,#fdf7f2,#f3f0ff); color: #1f2937; }
-.header { background: #b91c1c; color: #fff; text-align: center; }
-.header img.banner { width: 100%; max-width: 1200px; height: auto; display: block; margin: 0 auto; }
-.container { max-width: 820px; margin: 24px auto; padding: 24px; background: #ffffffcf; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1);} 
-h1 { margin: 10px 0 0; font-size: 28px; }
-h2 { color: #0a6b2b; margin-top: 18px; }
-.box { border: 2px dashed #d1d5db; padding: 16px; border-radius: 12px; background:#fff; }
-a.btn { display: inline-block; margin-top: 16px; padding: 12px 16px; background: #0a6b2b; color: #fff; text-decoration: none; border-radius: 10px; }
-button { margin-top: 12px; padding: 10px 14px; background: #b00020; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
-#answer { display: none; margin-top: 10px; font-weight: bold; color: #111827; }
-</style></head><body>
-<div class='header'><img src='assets/header_banner.png' class='banner' alt='Elam Family Advent Banner'/><h1>Advent Calendar 2025</h1></div>
-<div class='container'><ol>
-<li><a href='day_01.html'>Day 1: Tech day (unlimited screen time for 2 hrs)</a></li>
-<li><a href='day_02.html'>Day 2: Stay up 30 min late</a></li>
-<li><a href='day_03.html'>Day 3: Ice cream dessert after swim</a></li>
-<li><a href='day_04.html'>Day 4: Choose dinner for the night</a></li>
-<li><a href='day_05.html'>Day 5: Get taken to school in the morning</a></li>
-<li><a href='day_06.html'>Day 6: Skip dog poop chore</a></li>
-<li><a href='day_07.html'>Day 7: Play 2 hours of any video games with Dad</a></li>
-<li><a href='day_08.html'>Day 8: Get taken to school in the morning</a></li>
-<li><a href='day_09.html'>Day 9: Stay up 30 min late</a></li>
-<li><a href='day_10.html'>Day 10: Choose dinner for the night</a></li>
-<li><a href='day_11.html'>Day 11: $5 Starbucks gift card</a></li>
-<li><a href='day_12.html'>Day 12: Donuts with Dad</a></li>
-<li><a href='day_13.html'>Day 13: Nitro Circus Gift</a></li>
-<li><a href='day_14.html'>Day 14: Play 2 hours of any video games with Dad</a></li>
-<li><a href='day_15.html'>Day 15: Skip swim practice</a></li>
-<li><a href='day_16.html'>Day 16: Stay up 30 min late</a></li>
-<li><a href='day_17.html'>Day 17: Ice cream dessert after swim</a></li>
-<li><a href='day_18.html'>Day 18: Get taken to school in the morning</a></li>
-<li><a href='day_19.html'>Day 19: Choose dinner for the night</a></li>
-<li><a href='day_20.html'>Day 20: Skip dog poop chore</a></li>
-<li><a href='day_21.html'>Day 21: Weekend theater movie</a></li>
-<li><a href='day_22.html'>Day 22: Skip swim practice</a></li>
-<li><a href='day_23.html'>Day 23: Stay up 30 min late</a></li>
-<li><a href='day_24.html'>Day 24: Open 1 present early</a></li>
-<li><a href='day_25.html'>Day 25: Final surprise: Special day trip!</a></li>
-</ol></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elam Family Advent Banner — Index</title>
+    <style>
+:root{--bg1:#0b1c2c;--bg2:#143d5b;--card:#102a43;--text:#e6f1ff;--accent:#ffc857;--link:#64ffda}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans",sans-serif;color:var(--text);
+  background:radial-gradient(1200px 600px at 20% 0%, #1b2845 0%, var(--bg1) 30%),
+             radial-gradient(900px 500px at 80% 20%, #274060 0%, var(--bg2) 40%),
+             linear-gradient(180deg,var(--bg1),var(--bg2));
+  min-height:100vh;overflow-x:hidden}
+header{padding:24px 16px;text-align:center}
+header h1{margin:0;font-size:2rem}
+main{max-width:1000px;margin:0 auto;padding:16px;position:relative;z-index:2}
+section{background:rgba(16,42,67,.85);backdrop-filter:saturate(1.2) blur(2px);border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+section h2{margin-top:0;color:var(--accent)}
+.button{display:inline-block;background:var(--accent);color:#1a1a1a;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:600}
+.button:hover{filter:brightness(1.1)}
+footer{padding:24px;text-align:center;opacity:.8}
+#answer{margin-top:8px}
+.toggle{background:transparent;border:2px solid var(--accent);color:var(--accent);padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600}
+.toggle[disabled]{opacity:.5;cursor:not-allowed}
+/* Garland lights */
+.garland{position:fixed;top:0;left:0;width:100%;height:70px;pointer-events:none;z-index:1}
+.garland:before,.garland:after{content:"";position:absolute;left:0;right:0;height:70px;background:radial-gradient(circle at 5% 50%, #ff6b6b 4px, transparent 6px),
+  radial-gradient(circle at 10% 40%, #ffd93d 4px, transparent 6px),
+  radial-gradient(circle at 15% 60%, #6bffb3 4px, transparent 6px),
+  radial-gradient(circle at 20% 45%, #64ffda 4px, transparent 6px),
+  radial-gradient(circle at 25% 55%, #ff6b6b 4px, transparent 6px),
+  radial-gradient(circle at 30% 40%, #ffd93d 4px, transparent 6px),
+  radial-gradient(circle at 35% 60%, #6bffb3 4px, transparent 6px),
+  radial-gradient(circle at 40% 50%, #64ffda 4px, transparent 6px),
+  radial-gradient(circle at 45% 40%, #ff6b6b 4px, transparent 6px),
+  radial-gradient(circle at 50% 55%, #ffd93d 4px, transparent 6px),
+  radial-gradient(circle at 55% 45%, #6bffb3 4px, transparent 6px),
+  radial-gradient(circle at 60% 60%, #64ffda 4px, transparent 6px),
+  radial-gradient(circle at 65% 50%, #ff6b6b 4px, transparent 6px),
+  radial-gradient(circle at 70% 40%, #ffd93d 4px, transparent 6px),
+  radial-gradient(circle at 75% 60%, #6bffb3 4px, transparent 6px),
+  radial-gradient(circle at 80% 45%, #64ffda 4px, transparent 6px),
+  radial-gradient(circle at 85% 55%, #ff6b6b 4px, transparent 6px),
+  radial-gradient(circle at 90% 40%, #ffd93d 4px, transparent 6px),
+  radial-gradient(circle at 95% 60%, #6bffb3 4px, transparent 6px);
+  opacity:.75;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
+/* Falling snow */
+.snow{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.flake{position:absolute;top:-10px;width:8px;height:8px;border-radius:50%;background:#ffffff;opacity:.9;filter:blur(.5px);animation-name:fall, sway;animation-duration:var(--dur), var(--swayDur);animation-timing-function:linear, ease-in-out;animation-iteration-count:infinite, infinite;animation-delay:var(--delay), var(--swayDelay)}
+@keyframes fall{to{transform:translateY(110vh)}}
+@keyframes sway{0%{margin-left:0}50%{margin-left:var(--sway)}100%{margin-left:0}}
+/* Index grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:16px}
+.tile{background:rgba(16,42,67,.85);border-radius:12px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.35);display:flex;flex-direction:column;justify-content:space-between}
+.tile h2{margin:0 0 8px;color:var(--accent)}
+.tile p{margin:4px 0}
+.tile .actions{margin-top:12px}
+</style>
+  </head>
+  <body>
+    <div class="garland"></div>
+    <div class="snow"></div>
+    <header>
+      <h1>Elam Family Advent Banner — Days 1–25</h1>
+      <p>Select a day to view its reward, riddle, and surprise.</p>
+    </header>
+    <main>
+      <section>
+        <div class="grid">
+          <div class="tile">
+            <div>
+              <h2>Day 1</h2>
+              <p><strong>Monday - School Night</strong></p>
+              <p>Tech day (unlimited screen time for 2 hrs)</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_01.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 2</h2>
+              <p><strong>Tuesday - School Night</strong></p>
+              <p>Stay up 30 min late</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_02.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 3</h2>
+              <p><strong>Wednesday - School Night</strong></p>
+              <p>Ice cream dessert after swim</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_03.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 4</h2>
+              <p><strong>Thursday - School Night</strong></p>
+              <p>Choose dinner for the night</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_04.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 5</h2>
+              <p><strong>Friday</strong></p>
+              <p>Get taken to school in the morning</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_05.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 6</h2>
+              <p><strong>Saturday</strong></p>
+              <p>Skip dog poop Chore</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_06.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 7</h2>
+              <p><strong>Sunday - School Night</strong></p>
+              <p>Play 2 hours of any vides games with Dad</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_07.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 8</h2>
+              <p><strong>Monday - School Night</strong></p>
+              <p>Get taken to school in the morning</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_08.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 9</h2>
+              <p><strong>Tuesday - School Night</strong></p>
+              <p>Stay up 30 min late</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_09.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 10</h2>
+              <p><strong>Wednesday - School Night</strong></p>
+              <p>Choose dinner for the night</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_10.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 11</h2>
+              <p><strong>Thursday - School Night</strong></p>
+              <p>$5 Starbucks Gift Card</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_11.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 12</h2>
+              <p><strong>Friday</strong></p>
+              <p>Donuts with Dad</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_12.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 13</h2>
+              <p><strong>Saturday</strong></p>
+              <p>Nitro Circus Gift</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_13.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 14</h2>
+              <p><strong>Sunday - School Night</strong></p>
+              <p>Play 2 hours of any vides games with Dad</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_14.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 15</h2>
+              <p><strong>Monday - School Night</strong></p>
+              <p>Skip swin practice</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_15.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 16</h2>
+              <p><strong>Tuesday - School Night</strong></p>
+              <p>Stay up 30 min late</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_16.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 17</h2>
+              <p><strong>Wednesday - School Night</strong></p>
+              <p>Ice cream dessert after swim</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_17.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 18</h2>
+              <p><strong>Thursday - School Night</strong></p>
+              <p>Get taken to school in the morning</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_18.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 19</h2>
+              <p><strong>Friday</strong></p>
+              <p>Choose dinner for the night</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_19.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 20</h2>
+              <p><strong>Saturday</strong></p>
+              <p>Skip dog poop Chore</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_20.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 21</h2>
+              <p><strong>Sunday</strong></p>
+              <p>Weekend theater movie</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_21.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 22</h2>
+              <p><strong>Monday</strong></p>
+              <p>Skip swim practice</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_22.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 23</h2>
+              <p><strong>Tuesday</strong></p>
+              <p>Stay up 30 min late</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_23.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 24</h2>
+              <p><strong>Wednesday</strong></p>
+              <p>Open 1 present early</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_24.html">Open Day</a>
+            </div>
+          </div>
+<div class="tile">
+            <div>
+              <h2>Day 25</h2>
+              <p><strong>Thursday</strong></p>
+              <p>Final surprise: Special day trip!</p>
+            </div>
+            <div class="actions">
+              <a class="button" href="day_25.html">Open Day</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer>© Advent Calendar 2025</footer>
+    </main>
+  </body>
+</html>
