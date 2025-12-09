@@ -322,5 +322,42 @@ footer{padding:24px;text-align:center;opacity:.8}
       </section>
       <footer>© Advent Calendar 2025</footer>
     </main>
+    <script>
+(function(){
+  // Answer toggle
+  const btn = document.getElementById('toggle-answer');
+  const ans = document.getElementById('answer');
+  if(btn && ans){
+    if(ans.textContent.trim().length === 0){
+      btn.style.display = 'none';
+    } else {
+      btn.addEventListener('click', function(){
+        const hidden = ans.hasAttribute('hidden');
+        if(hidden){ ans.removeAttribute('hidden'); btn.textContent = 'Hide Answer'; }
+        else{ ans.setAttribute('hidden',''); btn.textContent = 'Show Answer'; }
+      });
+    }
+  }
+  // Generate snowflakes
+  const snow = document.querySelector('.snow');
+  if(snow){
+    const count = 80;
+    for(let i=0;i<count;i++){
+      const f = document.createElement('div');
+      f.className = 'flake';
+      const size = Math.random()*6+2;
+      f.style.width = size+'px';
+      f.style.height = size+'px';
+      f.style.left = Math.random()*100+'%';
+      f.style.setProperty('--dur', (6+Math.random()*10)+'s');
+      f.style.setProperty('--delay', (Math.random()*5)+'s');
+      f.style.setProperty('--sway', (Math.random()*40-20)+'px');
+      f.style.setProperty('--swayDur', (4+Math.random()*6)+'s');
+      f.style.setProperty('--swayDelay', (Math.random()*3)+'s');
+      snow.appendChild(f);
+    }
+  }
+})();
+</script>
   </body>
 </html>
