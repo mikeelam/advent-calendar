@@ -1,0 +1,55 @@
+
+name: Update Advent Surprise Links
+
+on:
+  workflow_dispatch:  # Run manually from the Actions tab
+
+permissions:
+  contents: write  # allow committing changes with GITHUB_TOKEN (required)
+
+jobs:
+  update-links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Patch Day 09–25 surprise links
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Helper: replace the href of the element that contains class="surprise-link"
+          # It handles both attribute orders (class before href and href before class).
+          patch() {
+            local file="$1"; local url="$2"
+            # Pattern 1: class then href
+            sed -i.bak "s|<a[^>]*class=\"surprise-link\"[^>]*href=\"[^\"]*\"|<a class=\"surprise-link\" href=\"${url}\"|g" "$file"
+            # Pattern 2: href then class
+            sed -i.bak "s|<a[^>]*href=\"[^\"]*\"[^>]*class=\"surprise-link\"|<a href=\"${url}\" class=\"surprise-link\"|g" "$file"
+            rm -f "${file}.bak"
+          }
+
+          patch advent_pages/day_09.html "https://santatracker.google.com/elfmaker.html"
+          patch advent_pages/day_10.html "https://kids.nationalgeographic.com/celebrations/article/christmas"
+          patch advent_pages/day_11.html "https://ssec.si.edu/stemvisions-blog/winter-science-activities-kids"
+          patch advent_pages/day_12.html "https://code.org/dance"
+          patch advent_pages/day_13.html "https://scratch.mit.edu/studios/28030275/"
+          patch advent_pages/day_14.html "https://lego.com/themes/lego-builder"
+          patch advent_pages/day_15.html "https://spaceplace.nasa.gov/menu/parents-and-educators/"
+          patch advent_pages/day_16.html "https://artsandculture.google.com/project/holidays"
+          patch advent_pages/day_17.html "https://pbskids.org/games/holiday/"
+          patch advent_pages/day_18.html "https://www.dkfindout.com/us/history/christmas/"
+          patch advent_pages/day_19.html "https://kids.nationalgeographic.com/animals/mammals/facts/reindeer"
+          patch advent_pages/day_20.html "https://santatracker.google.com/presentbounce.html"
+          patch advent_pages/day_21.html "https://toytheater.com/christmas/"
+          patch advent_pages/day_22.html "https://home.oxfordowl.co.uk/reading/reading-schemes-oxford-levels/christmas-reading-activities/"
+          patch advent_pages/day_23.html "https://studio.code.org/s/frozen"
+          patch advent_pages/day_24.html "https://www.noradsanta.org/en/"
+          patch advent_pages/day_25.html "https://santatracker.google.com/village.html"
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Advent: refresh Surprise links for Days 09–25"
