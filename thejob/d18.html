@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#0a0c10">
+<title>Day 18 — THE THIRD NUMBER</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#0a0c10;--paper:#12161d;--line:#252d3a;--text:#e3e8f0;--dim:#8b96a8;
+--amber:#f5b93a;--red:#e5484d;--green:#30a46c}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--ink);color:var(--text);min-height:100vh;
+font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+font-size:16px;line-height:1.68;padding:0 0 3rem;
+background-image:radial-gradient(circle at 50% 0%,#151b24 0%,var(--ink) 60%)}
+.wrap{max-width:34rem;margin:0 auto;padding:0 1.25rem}
+.stamp{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
+border-bottom:1px solid var(--line);padding:1rem 0 .75rem;display:flex;
+justify-content:space-between;gap:1rem}
+.stamp b{color:var(--amber);font-weight:600}
+h1{font-size:clamp(1.65rem,7.5vw,2.35rem);line-height:1.08;letter-spacing:-.02em;
+margin:2rem 0 .3rem;color:#fff;font-weight:700}
+.codename{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+color:var(--amber);margin-bottom:2rem;display:block}
+p{margin:0 0 1.15rem;color:var(--text)}
+p.lead{font-size:1.06rem;color:#fff}
+hr{border:0;border-top:1px solid var(--line);margin:1.9rem 0}
+.card{border:1px solid var(--line);border-left:2px solid var(--amber);
+background:var(--paper);padding:1.1rem 1.15rem;margin:0 0 1.25rem;border-radius:2px}
+.card h2{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+color:var(--amber);font-weight:600;margin-bottom:.55rem}
+.card p:last-child{margin-bottom:0}
+.card p{color:var(--text)}
+.card.sealed{border-left-color:var(--red)}
+.card.sealed h2{color:var(--red)}
+.reveal{display:block;width:100%;text-align:left;cursor:pointer;
+background:transparent;border:1px dashed var(--line);color:var(--dim);
+font:inherit;font-size:.85rem;padding:.95rem 1rem;border-radius:2px;
+transition:border-color .15s,color .15s}
+.reveal:hover,.reveal:focus-visible{border-color:var(--amber);color:var(--amber);outline:none}
+.reveal[aria-expanded="true"]{border-color:var(--amber);color:var(--amber);border-style:solid}
+.hidden-content{display:none;margin-top:.9rem}
+.hidden-content.show{display:block}
+.digit{font-size:2.7rem;letter-spacing:.34em;color:var(--amber);text-align:center;
+padding:.4rem 0;font-weight:700}
+footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--line);
+font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
+display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.lock-digits{display:flex;gap:.5rem;justify-content:center;margin:1.4rem 0}
+.lock-digits input{width:3.2rem;height:3.7rem;text-align:center;font:inherit;
+font-size:1.6rem;font-weight:700;background:var(--ink);border:1px solid var(--line);
+color:var(--amber);border-radius:2px;caret-color:var(--amber)}
+.lock-digits input:focus{outline:none;border-color:var(--amber)}
+.vault-open{border:1px solid var(--green);background:rgba(48,164,108,.07);
+padding:1.4rem;border-radius:2px;margin:1.25rem 0}
+.vault-open h2{color:var(--green);font-size:.66rem;letter-spacing:.2em;
+text-transform:uppercase;margin-bottom:.7rem}
+.err{color:var(--red);font-size:.78rem;text-align:center;letter-spacing:.08em;
+margin:.6rem 0 0;min-height:1.1em}
+.sig{color:var(--dim);font-style:italic;font-size:.9rem;margin-top:1.6rem}
+a{color:var(--amber)}
+@media(prefers-reduced-motion:no-preference){
+.fade{animation:fade .45s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body><div class="wrap">
+<div class="stamp"><span>Drop <b>18</b> / 25</span><span>FRIDAY</span></div>
+<h1>THE THIRD NUMBER</h1>
+<span class="codename">2026 &middot; operation elam job</span>
+<div class="fade"><p class="lead">The envelope from day fourteen. Open it now.</p>
+<p>Inside is the third digit, and a name. The name is Magpie. Magpie is the fourth. Magpie is the leak.</p>
+<p>I&#x27;ve known since day nine and I&#x27;ve been letting them work.</p>
+<p>Third of four. One more and the vault is yours.</p></div>
+<hr><div class="card"><h2>Standing order</h2><p>Open the sealed envelope. Read it alone.</p></div>
+<div class="card sealed">
+<h2>Combination &mdash; third digit</h2>
+<button class="reveal" type="button" aria-expanded="false" aria-controls="dig">Reveal digit</button>
+<div class="hidden-content" id="dig"><div class="digit">2</div></div>
+</div>
+<div class="sig">&mdash; Whisper</div>
+<footer><span>Elam Job</span><span>Day 18</span></footer>
+</div><script>
+(function(){
+ document.querySelectorAll('.reveal[aria-controls]').forEach(function(b){
+  b.addEventListener('click',function(){
+   var t=document.getElementById(b.getAttribute('aria-controls'));
+   var open=b.getAttribute('aria-expanded')==='true';
+   b.setAttribute('aria-expanded',String(!open));
+   t.classList.toggle('show',!open);
+   b.textContent=open?'Reveal digit':'Hide digit';
+  });
+ });
+})();
+</script></body></html>
