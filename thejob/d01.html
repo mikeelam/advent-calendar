@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="theme-color" content="#0a0c10">
-<title>Day 01 — RECRUIT</title>
+<title>Day 01 — INTAKE</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--ink:#0a0c10;--paper:#12161d;--line:#252d3a;--text:#e3e8f0;--dim:#8b96a8;
@@ -26,6 +26,7 @@ margin:2rem 0 .3rem;color:#fff;font-weight:700}
 color:var(--amber);margin-bottom:2rem;display:block}
 p{margin:0 0 1.15rem;color:var(--text)}
 p.lead{font-size:1.06rem;color:#fff}
+p.cipher{color:#fff;font-weight:600;letter-spacing:.03em;overflow-wrap:anywhere;margin:0}
 hr{border:0;border-top:1px solid var(--line);margin:1.9rem 0}
 .card{border:1px solid var(--line);border-left:2px solid var(--amber);
 background:var(--paper);padding:1.1rem 1.15rem;margin:0 0 1.25rem;border-radius:2px}
@@ -43,8 +44,13 @@ transition:border-color .15s,color .15s}
 .reveal[aria-expanded="true"]{border-color:var(--amber);color:var(--amber);border-style:solid}
 .hidden-content{display:none;margin-top:.9rem}
 .hidden-content.show{display:block}
-.digit{font-size:2.7rem;letter-spacing:.34em;color:var(--amber);text-align:center;
-padding:.4rem 0;font-weight:700}
+ul{margin:.2rem 0 0 1.15rem}
+li{margin:.35rem 0}
+.words{display:grid;grid-template-columns:1fr 1fr;gap:.2rem .75rem;color:#fff;font-weight:600}
+.words b{color:var(--amber);font-weight:600;margin-right:.4rem}
+table{border-collapse:collapse;width:100%;margin-top:.3rem}
+th,td{border:1px solid var(--line);text-align:center;padding:.4rem .15rem;color:#fff;font-weight:600}
+th{color:var(--amber);font-size:.75rem;font-weight:600}
 footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--line);
 font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
 display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
@@ -57,8 +63,8 @@ color:var(--amber);border-radius:2px;caret-color:var(--amber)}
 padding:1.4rem;border-radius:2px;margin:1.25rem 0}
 .vault-open h2{color:var(--green);font-size:.66rem;letter-spacing:.2em;
 text-transform:uppercase;margin-bottom:.7rem}
-.err{color:var(--red);font-size:.78rem;text-align:center;letter-spacing:.08em;
-margin:.6rem 0 0;min-height:1.1em}
+.err{font-size:.78rem;text-align:center;letter-spacing:.08em;margin:.6rem 0 0;min-height:1.1em}
+.card p.err{color:var(--red)}
 .sig{color:var(--dim);font-style:italic;font-size:.9rem;margin-top:1.6rem}
 a{color:var(--amber)}
 @media(prefers-reduced-motion:no-preference){
@@ -68,15 +74,19 @@ a{color:var(--amber)}
 </head>
 <body><div class="wrap">
 <div class="stamp"><span>Drop <b>01</b> / 25</span><span>TUESDAY</span></div>
-<h1>RECRUIT</h1>
-<span class="codename">2026 &middot; operation elam job</span>
-<div class="fade"><p class="lead">Rookie. You found the envelope, which means you&#x27;re either curious or bored. Both work for us.</p>
-<p>Here&#x27;s what you need to know and nothing more. There&#x27;s a crew. There&#x27;s a job. It goes down Christmas morning, early, before this house wakes up. Every morning between now and then, a drop appears in one of these drawers. Some are gear. Some are intelligence. One of them is a problem.</p>
-<p>Nobody in this house knows you&#x27;re doing this. Keep it that way.</p></div>
-<hr><div class="card"><h2>Standing order</h2><p>Tell no one. If anyone asks what&#x27;s in the drawers, the word is socks.</p></div>
-<div class="sig">&mdash; Whisper</div>
-<footer><span>Elam Job</span><span>Day 01</span></footer>
-</div><script>
+<h1>INTAKE</h1>
+<span class="codename">2026 &middot; north</span>
+<div class="fade"><p class="lead">This is the file. Twenty-five drops, then a vault. Christmas morning. Four digits.</p>
+<p>You will not be handed the digits. You collect them.</p>
+<p>Keep every drop. Later files cite earlier ones.</p>
+<p>If anyone in the house asks, you were checking the time.</p></div>
+<div class="card"><h2>Burner list</h2><div class="words"><span><b>01</b> ash</span><span><b>02</b> the</span><span><b>03</b> kiln</span><span><b>04</b> bolt</span><span><b>05</b> glass</span><span><b>06</b> margin</span><span><b>07</b> river</span><span><b>08</b> use</span><span><b>09</b> cedar</span><span><b>10</b> word</span><span><b>11</b> on</span><span><b>12</b> nail</span><span><b>13</b> drop</span><span><b>14</b> frost</span><span><b>15</b> eight</span><span><b>16</b> linen</span><span><b>17</b> salt</span><span><b>18</b> slate</span><span><b>19</b> iron</span><span><b>20</b> chalk</span><span><b>21</b> wire</span><span><b>22</b> lamp</span><span><b>23</b> stone</span><span><b>24</b> birch</span></div></div>
+<div class="card"><h2>Rules</h2><p>Routes get reused. If an old method fits, use it.</p><p>A page you cannot solve yet is not a broken page.</p><p>Vault morning is early.</p><p>Every digit is carried. None are sent to you.</p><p>Notes should not look like notes.</p></div>
+<div class="card"><h2>Hint</h2><button class="reveal" type="button" aria-expanded="false" aria-controls="hint">Hint</button><div class="hidden-content" id="hint"><p>The five rules. Read the first letter of each, top to bottom.</p></div></div>
+<div class="sig">&mdash; North</div>
+<footer><span>North</span><span>Day 01</span></footer>
+</div>
+<script>
 (function(){
  document.querySelectorAll('.reveal[aria-controls]').forEach(function(b){
   b.addEventListener('click',function(){
@@ -84,7 +94,7 @@ a{color:var(--amber)}
    var open=b.getAttribute('aria-expanded')==='true';
    b.setAttribute('aria-expanded',String(!open));
    t.classList.toggle('show',!open);
-   b.textContent=open?'Reveal digit':'Hide digit';
+   b.textContent=open?'Hint':'Hide hint';
   });
  });
 })();

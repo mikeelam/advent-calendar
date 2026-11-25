@@ -26,6 +26,7 @@ margin:2rem 0 .3rem;color:#fff;font-weight:700}
 color:var(--amber);margin-bottom:2rem;display:block}
 p{margin:0 0 1.15rem;color:var(--text)}
 p.lead{font-size:1.06rem;color:#fff}
+p.cipher{color:#fff;font-weight:600;letter-spacing:.03em;overflow-wrap:anywhere;margin:0}
 hr{border:0;border-top:1px solid var(--line);margin:1.9rem 0}
 .card{border:1px solid var(--line);border-left:2px solid var(--amber);
 background:var(--paper);padding:1.1rem 1.15rem;margin:0 0 1.25rem;border-radius:2px}
@@ -43,8 +44,13 @@ transition:border-color .15s,color .15s}
 .reveal[aria-expanded="true"]{border-color:var(--amber);color:var(--amber);border-style:solid}
 .hidden-content{display:none;margin-top:.9rem}
 .hidden-content.show{display:block}
-.digit{font-size:2.7rem;letter-spacing:.34em;color:var(--amber);text-align:center;
-padding:.4rem 0;font-weight:700}
+ul{margin:.2rem 0 0 1.15rem}
+li{margin:.35rem 0}
+.words{display:grid;grid-template-columns:1fr 1fr;gap:.2rem .75rem;color:#fff;font-weight:600}
+.words b{color:var(--amber);font-weight:600;margin-right:.4rem}
+table{border-collapse:collapse;width:100%;margin-top:.3rem}
+th,td{border:1px solid var(--line);text-align:center;padding:.4rem .15rem;color:#fff;font-weight:600}
+th{color:var(--amber);font-size:.75rem;font-weight:600}
 footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--line);
 font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
 display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
@@ -57,8 +63,8 @@ color:var(--amber);border-radius:2px;caret-color:var(--amber)}
 padding:1.4rem;border-radius:2px;margin:1.25rem 0}
 .vault-open h2{color:var(--green);font-size:.66rem;letter-spacing:.2em;
 text-transform:uppercase;margin-bottom:.7rem}
-.err{color:var(--red);font-size:.78rem;text-align:center;letter-spacing:.08em;
-margin:.6rem 0 0;min-height:1.1em}
+.err{font-size:.78rem;text-align:center;letter-spacing:.08em;margin:.6rem 0 0;min-height:1.1em}
+.card p.err{color:var(--red)}
 .sig{color:var(--dim);font-style:italic;font-size:.9rem;margin-top:1.6rem}
 a{color:var(--amber)}
 @media(prefers-reduced-motion:no-preference){
@@ -67,5 +73,10 @@ a{color:var(--amber)}
 </style>
 </head>
 <body><div class="wrap">
-<div class="stamp"><span>Elam Job</span><span>&mdash;</span></div><h1>Nothing here.</h1><p class="lead">That is not a drop.</p><p>If you are guessing at links, stop. The drawers are the only way in.</p>
-</div></body></html>
+<div class="stamp"><span>North</span><span>&mdash;</span></div>
+<h1>Nothing here.</h1>
+<p class="lead">That address is not a drop.</p>
+<p>If you are trying paths, stop. The drawers are the order.</p>
+<footer><span>North</span><span>&mdash;</span></footer>
+</div>
+</body></html>

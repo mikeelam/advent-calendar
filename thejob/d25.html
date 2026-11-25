@@ -26,6 +26,7 @@ margin:2rem 0 .3rem;color:#fff;font-weight:700}
 color:var(--amber);margin-bottom:2rem;display:block}
 p{margin:0 0 1.15rem;color:var(--text)}
 p.lead{font-size:1.06rem;color:#fff}
+p.cipher{color:#fff;font-weight:600;letter-spacing:.03em;overflow-wrap:anywhere;margin:0}
 hr{border:0;border-top:1px solid var(--line);margin:1.9rem 0}
 .card{border:1px solid var(--line);border-left:2px solid var(--amber);
 background:var(--paper);padding:1.1rem 1.15rem;margin:0 0 1.25rem;border-radius:2px}
@@ -43,8 +44,13 @@ transition:border-color .15s,color .15s}
 .reveal[aria-expanded="true"]{border-color:var(--amber);color:var(--amber);border-style:solid}
 .hidden-content{display:none;margin-top:.9rem}
 .hidden-content.show{display:block}
-.digit{font-size:2.7rem;letter-spacing:.34em;color:var(--amber);text-align:center;
-padding:.4rem 0;font-weight:700}
+ul{margin:.2rem 0 0 1.15rem}
+li{margin:.35rem 0}
+.words{display:grid;grid-template-columns:1fr 1fr;gap:.2rem .75rem;color:#fff;font-weight:600}
+.words b{color:var(--amber);font-weight:600;margin-right:.4rem}
+table{border-collapse:collapse;width:100%;margin-top:.3rem}
+th,td{border:1px solid var(--line);text-align:center;padding:.4rem .15rem;color:#fff;font-weight:600}
+th{color:var(--amber);font-size:.75rem;font-weight:600}
 footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--line);
 font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
 display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
@@ -57,8 +63,8 @@ color:var(--amber);border-radius:2px;caret-color:var(--amber)}
 padding:1.4rem;border-radius:2px;margin:1.25rem 0}
 .vault-open h2{color:var(--green);font-size:.66rem;letter-spacing:.2em;
 text-transform:uppercase;margin-bottom:.7rem}
-.card p.err{color:var(--red);font-size:.78rem;text-align:center;letter-spacing:.08em;
-margin:.6rem 0 0;min-height:1.1em}
+.err{font-size:.78rem;text-align:center;letter-spacing:.08em;margin:.6rem 0 0;min-height:1.1em}
+.card p.err{color:var(--red)}
 .sig{color:var(--dim);font-style:italic;font-size:.9rem;margin-top:1.6rem}
 a{color:var(--amber)}
 @media(prefers-reduced-motion:no-preference){
@@ -69,26 +75,30 @@ a{color:var(--amber)}
 <body><div class="wrap">
 <div class="stamp"><span>Drop <b>25</b> / 25</span><span>FRIDAY</span></div>
 <h1>THE VAULT</h1>
-<span class="codename">2026 &middot; operation elam job</span>
-<div class="fade"><p class="lead">Four digits. Enter them.</p></div>
-<hr><div class="card"><h2>Standing order</h2><p>Enter the combination and open the vault.</p></div>
+<span class="codename">2026 &middot; north</span>
+<div class="fade"><p class="lead">Four digits. Found order.</p></div>
 <div class="card"><h2>The vault</h2>
-<p>Four digits, in order.</p>
+<p>Enter them.</p>
 <form id="vault-form" autocomplete="off">
 <div class="lock-digits">
-<input inputmode="numeric" maxlength="1" aria-label="Digit 1">
-<input inputmode="numeric" maxlength="1" aria-label="Digit 2">
-<input inputmode="numeric" maxlength="1" aria-label="Digit 3">
-<input inputmode="numeric" maxlength="1" aria-label="Digit 4">
+<input inputmode="numeric" maxlength="1" aria-label="Digit 1" pattern="[0-9]*">
+<input inputmode="numeric" maxlength="1" aria-label="Digit 2" pattern="[0-9]*">
+<input inputmode="numeric" maxlength="1" aria-label="Digit 3" pattern="[0-9]*">
+<input inputmode="numeric" maxlength="1" aria-label="Digit 4" pattern="[0-9]*">
 </div>
 <button class="reveal" type="submit" style="text-align:center">Open the vault</button>
 <p class="err" id="err" role="alert"></p>
 </form>
-<div class="vault-open" id="vault" hidden><h2>Access granted</h2><p>The combination works. It was always going to work — you did the reading.</p><p>Here&#x27;s what was actually in the vault: a new phone. Not a hand-me-down and not a loaner — yours. He has been sitting on it since December first and he is not good at waiting.</p><p>And here&#x27;s the part I couldn&#x27;t tell you until now. Kestrel was never outside. Kestrel was your dad. He&#x27;s been running this operation since the first envelope, and he&#x27;s been waiting twenty-five days for you to figure it out.</p><p>Case closed, rookie. Good work.</p></div>
+<div class="vault-open" id="vault" hidden><h2>Open</h2>
+<p>You cracked it.</p>
+<p>The vault was holding a new phone. Unused. Yours.</p>
+<p>That is the take.</p>
 </div>
-<div class="sig">&mdash; Whisper</div>
-<footer><span>Elam Job</span><span>Day 25</span></footer>
-</div><script>
+</div>
+<div class="sig">&mdash; North</div>
+<footer><span>North</span><span>Day 25</span></footer>
+</div>
+<script>
 (function(){
  document.querySelectorAll('.reveal[aria-controls]').forEach(function(b){
   b.addEventListener('click',function(){
@@ -96,16 +106,24 @@ a{color:var(--amber)}
    var open=b.getAttribute('aria-expanded')==='true';
    b.setAttribute('aria-expanded',String(!open));
    t.classList.toggle('show',!open);
-   b.textContent=open?'Reveal digit':'Hide digit';
+   b.textContent=open?'Hint':'Hide hint';
   });
  });
 })();
-
+</script><script>
 (function(){
  var f=document.getElementById('vault-form');
  if(!f)return;
- var K=function(a){return a.map(function(v,i){return String(v-(i+1)*7)}).join('')};
+ var WANT='ec2bae1a71badf7900501bc2663a7f7f9329f785c1d64d9a285c3568b441e5ae';
  var ins=[].slice.call(f.querySelectorAll('input'));
+ function hexOf(buf){
+  var bytes=new Uint8Array(buf), hex='', i, h;
+  for(i=0;i<bytes.length;i++){
+   h=bytes[i].toString(16);
+   hex+=h.length===1?'0'+h:h;
+  }
+  return hex;
+ }
  ins.forEach(function(el,i){
   el.addEventListener('input',function(){
    el.value=el.value.replace(/\D/g,'').slice(0,1);
@@ -119,14 +137,19 @@ a{color:var(--amber)}
   e.preventDefault();
   var v=ins.map(function(x){return x.value}).join('');
   var err=document.getElementById('err');
-  if(v===K([14,18,23,37])){
-   document.getElementById('vault').hidden=false;
-   err.textContent=''; f.style.display='none';
-   document.getElementById('vault').scrollIntoView({behavior:'smooth',block:'center'});
-  } else {
-   err.textContent='Not it. Think about what you were told to keep.';
-   ins.forEach(function(x){x.value=''}); ins[0].focus();
-  }
+  if(v.length!==4){err.textContent='Four digits.';return;}
+  crypto.subtle.digest('SHA-256', new TextEncoder().encode('north|'+v)).then(function(buf){
+   if(hexOf(buf)===WANT){
+    document.getElementById('vault').hidden=false;
+    err.textContent='';
+    f.style.display='none';
+    document.getElementById('vault').scrollIntoView({behavior:'smooth',block:'center'});
+   }else{
+    err.textContent='Not it. Order matters.';
+    ins.forEach(function(x){x.value='';});
+    ins[0].focus();
+   }
+  });
  });
  ins[0].focus();
 })();
