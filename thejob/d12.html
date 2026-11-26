@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="theme-color" content="#0a0c10">
-<title>Day 12 — REPEAT</title>
+<title>Day 12 — RULER</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--ink:#0a0c10;--paper:#12161d;--line:#252d3a;--text:#e3e8f0;--dim:#8b96a8;
@@ -27,30 +27,23 @@ color:var(--amber);margin-bottom:2rem;display:block}
 p{margin:0 0 1.15rem;color:var(--text)}
 p.lead{font-size:1.06rem;color:#fff}
 p.cipher{color:#fff;font-weight:600;letter-spacing:.03em;overflow-wrap:anywhere;margin:0}
-hr{border:0;border-top:1px solid var(--line);margin:1.9rem 0}
 .card{border:1px solid var(--line);border-left:2px solid var(--amber);
 background:var(--paper);padding:1.1rem 1.15rem;margin:0 0 1.25rem;border-radius:2px}
 .card h2{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
 color:var(--amber);font-weight:600;margin-bottom:.55rem}
 .card p:last-child{margin-bottom:0}
 .card p{color:var(--text)}
-.card.sealed{border-left-color:var(--red)}
-.card.sealed h2{color:var(--red)}
 .reveal{display:block;width:100%;text-align:left;cursor:pointer;
 background:transparent;border:1px dashed var(--line);color:var(--dim);
 font:inherit;font-size:.85rem;padding:.95rem 1rem;border-radius:2px;
 transition:border-color .15s,color .15s}
+.reveal + .reveal,.hidden-content + .reveal{margin-top:.7rem}
 .reveal:hover,.reveal:focus-visible{border-color:var(--amber);color:var(--amber);outline:none}
 .reveal[aria-expanded="true"]{border-color:var(--amber);color:var(--amber);border-style:solid}
 .hidden-content{display:none;margin-top:.9rem}
 .hidden-content.show{display:block}
 ul{margin:.2rem 0 0 1.15rem}
 li{margin:.35rem 0}
-.words{display:grid;grid-template-columns:1fr 1fr;gap:.2rem .75rem;color:#fff;font-weight:600}
-.words b{color:var(--amber);font-weight:600;margin-right:.4rem}
-table{border-collapse:collapse;width:100%;margin-top:.3rem}
-th,td{border:1px solid var(--line);text-align:center;padding:.4rem .15rem;color:#fff;font-weight:600}
-th{color:var(--amber);font-size:.75rem;font-weight:600}
 footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--line);
 font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
 display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
@@ -74,11 +67,12 @@ a{color:var(--amber)}
 </head>
 <body><div class="wrap">
 <div class="stamp"><span>Drop <b>12</b> / 25</span><span>SATURDAY</span></div>
-<h1>REPEAT</h1>
+<h1>RULER</h1>
 <span class="codename">2026 &middot; north</span>
-<div class="fade"><p class="lead">Same kind of key as drop 08. This page is not a vault digit.</p></div>
-<div class="card"><h2>Ciphertext</h2><p class="cipher">GAMORU TZBG LSZW N IEKINK KZC</p></div>
-<div class="card"><h2>Hint</h2><button class="reveal" type="button" aria-expanded="false" aria-controls="hint">Hint</button><div class="hidden-content" id="hint"><p>Same subtraction as drop 08. Same five-letter key. Spaces stay spaces.</p></div></div>
+<div class="fade"><p class="lead">It measures. It is not a guess.</p></div>
+<div class="card"><h2>Question</h2><p>I measure straight lines and I am not a guess. What am I?</p></div>
+<div class="card"><h2>Save this</h2><p>Piece for the week: the first letter of your answer.</p></div>
+<div class="card"><h2>Hints</h2><button class="reveal" type="button" data-label="Hint 1" aria-expanded="false" aria-controls="h12a">Hint 1</button><div class="hidden-content" id="h12a"><p>Students keep one in a pencil case.</p></div><button class="reveal" type="button" data-label="Hint 2" aria-expanded="false" aria-controls="h12b">Hint 2</button><div class="hidden-content" id="h12b"><p>It measures and it is not a guess. A ruler. Piece for the week: R.</p></div></div>
 <div class="sig">&mdash; North</div>
 <footer><span>North</span><span>Day 12</span></footer>
 </div>
@@ -90,7 +84,8 @@ a{color:var(--amber)}
    var open=b.getAttribute('aria-expanded')==='true';
    b.setAttribute('aria-expanded',String(!open));
    t.classList.toggle('show',!open);
-   b.textContent=open?'Hint':'Hide hint';
+   var label=b.getAttribute('data-label')||'Hint';
+   b.textContent=open?label:'Hide';
   });
  });
 })();

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="theme-color" content="#0a0c10">
-<title>Day 11 — POSTINGS</title>
+<title>Day 11 — ADA</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--ink:#0a0c10;--paper:#12161d;--line:#252d3a;--text:#e3e8f0;--dim:#8b96a8;
@@ -27,30 +27,23 @@ color:var(--amber);margin-bottom:2rem;display:block}
 p{margin:0 0 1.15rem;color:var(--text)}
 p.lead{font-size:1.06rem;color:#fff}
 p.cipher{color:#fff;font-weight:600;letter-spacing:.03em;overflow-wrap:anywhere;margin:0}
-hr{border:0;border-top:1px solid var(--line);margin:1.9rem 0}
 .card{border:1px solid var(--line);border-left:2px solid var(--amber);
 background:var(--paper);padding:1.1rem 1.15rem;margin:0 0 1.25rem;border-radius:2px}
 .card h2{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
 color:var(--amber);font-weight:600;margin-bottom:.55rem}
 .card p:last-child{margin-bottom:0}
 .card p{color:var(--text)}
-.card.sealed{border-left-color:var(--red)}
-.card.sealed h2{color:var(--red)}
 .reveal{display:block;width:100%;text-align:left;cursor:pointer;
 background:transparent;border:1px dashed var(--line);color:var(--dim);
 font:inherit;font-size:.85rem;padding:.95rem 1rem;border-radius:2px;
 transition:border-color .15s,color .15s}
+.reveal + .reveal,.hidden-content + .reveal{margin-top:.7rem}
 .reveal:hover,.reveal:focus-visible{border-color:var(--amber);color:var(--amber);outline:none}
 .reveal[aria-expanded="true"]{border-color:var(--amber);color:var(--amber);border-style:solid}
 .hidden-content{display:none;margin-top:.9rem}
 .hidden-content.show{display:block}
 ul{margin:.2rem 0 0 1.15rem}
 li{margin:.35rem 0}
-.words{display:grid;grid-template-columns:1fr 1fr;gap:.2rem .75rem;color:#fff;font-weight:600}
-.words b{color:var(--amber);font-weight:600;margin-right:.4rem}
-table{border-collapse:collapse;width:100%;margin-top:.3rem}
-th,td{border:1px solid var(--line);text-align:center;padding:.4rem .15rem;color:#fff;font-weight:600}
-th{color:var(--amber);font-size:.75rem;font-weight:600}
 footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--line);
 font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
 display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
@@ -74,11 +67,12 @@ a{color:var(--amber)}
 </head>
 <body><div class="wrap">
 <div class="stamp"><span>Drop <b>11</b> / 25</span><span>FRIDAY</span></div>
-<h1>POSTINGS</h1>
+<h1>ADA</h1>
 <span class="codename">2026 &middot; north</span>
-<div class="fade"><p class="lead">Three names, three cities, three case numbers. One city is worth keeping.</p></div>
-<div class="card"><h2>File</h2><ul><li>Reed is not posted to Lisbon.</li><li>The Oslo file carries five.</li><li>Sato&#x27;s number is higher than Quinn&#x27;s.</li><li>Cairo carries two.</li><li>Quinn is not posted to Cairo.</li></ul><p>Which city is Sato posted to?</p></div>
-<div class="card"><h2>Hint</h2><button class="reveal" type="button" aria-expanded="false" aria-controls="hint">Hint</button><div class="hidden-content" id="hint"><p>The two clues that name a city and a number fill those cities first. Then see who can still hold the high number.</p></div></div>
+<div class="fade"><p class="lead">Exactly one of them is telling the truth. Name that person.</p></div>
+<div class="card"><h2>Statements</h2><ul><li>Ada: the key is not in the red box.</li><li>Bo: the key is in the red box.</li><li>Cai: the key is in the red box.</li></ul></div>
+<div class="card"><h2>Save this</h2><p>Piece for the week: the initial of the person telling the truth.</p></div>
+<div class="card"><h2>Hints</h2><button class="reveal" type="button" data-label="Hint 1" aria-expanded="false" aria-controls="h11a">Hint 1</button><div class="hidden-content" id="h11a"><p>Pretend the key is in the red box and count the true statements. Then try the other way. The piece is an initial.</p></div><button class="reveal" type="button" data-label="Hint 2" aria-expanded="false" aria-controls="h11b">Hint 2</button><div class="hidden-content" id="h11b"><p>Really? Fine. Ada is the only one telling the truth. Piece for the week: A. Her initial. I should not have to say initial.</p></div></div>
 <div class="sig">&mdash; North</div>
 <footer><span>North</span><span>Day 11</span></footer>
 </div>
@@ -90,7 +84,8 @@ a{color:var(--amber)}
    var open=b.getAttribute('aria-expanded')==='true';
    b.setAttribute('aria-expanded',String(!open));
    t.classList.toggle('show',!open);
-   b.textContent=open?'Hint':'Hide hint';
+   var label=b.getAttribute('data-label')||'Hint';
+   b.textContent=open?label:'Hide';
   });
  });
 })();
