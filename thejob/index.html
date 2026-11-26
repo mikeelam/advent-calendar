@@ -27,30 +27,23 @@ color:var(--amber);margin-bottom:2rem;display:block}
 p{margin:0 0 1.15rem;color:var(--text)}
 p.lead{font-size:1.06rem;color:#fff}
 p.cipher{color:#fff;font-weight:600;letter-spacing:.03em;overflow-wrap:anywhere;margin:0}
-hr{border:0;border-top:1px solid var(--line);margin:1.9rem 0}
 .card{border:1px solid var(--line);border-left:2px solid var(--amber);
 background:var(--paper);padding:1.1rem 1.15rem;margin:0 0 1.25rem;border-radius:2px}
 .card h2{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
 color:var(--amber);font-weight:600;margin-bottom:.55rem}
 .card p:last-child{margin-bottom:0}
 .card p{color:var(--text)}
-.card.sealed{border-left-color:var(--red)}
-.card.sealed h2{color:var(--red)}
 .reveal{display:block;width:100%;text-align:left;cursor:pointer;
 background:transparent;border:1px dashed var(--line);color:var(--dim);
 font:inherit;font-size:.85rem;padding:.95rem 1rem;border-radius:2px;
 transition:border-color .15s,color .15s}
+.reveal + .reveal,.hidden-content + .reveal{margin-top:.7rem}
 .reveal:hover,.reveal:focus-visible{border-color:var(--amber);color:var(--amber);outline:none}
 .reveal[aria-expanded="true"]{border-color:var(--amber);color:var(--amber);border-style:solid}
 .hidden-content{display:none;margin-top:.9rem}
 .hidden-content.show{display:block}
 ul{margin:.2rem 0 0 1.15rem}
 li{margin:.35rem 0}
-.words{display:grid;grid-template-columns:1fr 1fr;gap:.2rem .75rem;color:#fff;font-weight:600}
-.words b{color:var(--amber);font-weight:600;margin-right:.4rem}
-table{border-collapse:collapse;width:100%;margin-top:.3rem}
-th,td{border:1px solid var(--line);text-align:center;padding:.4rem .15rem;color:#fff;font-weight:600}
-th{color:var(--amber);font-size:.75rem;font-weight:600}
 footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--line);
 font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
 display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
@@ -76,7 +69,7 @@ a{color:var(--amber)}
 <div class="stamp"><span>The Elam Job</span><span>2026</span></div>
 <h1>File open.</h1>
 <p class="lead">Twenty-five drops. One vault. Christmas morning.</p>
-<p>Start at the first drawer. Keep every page. Later drops cite earlier ones.</p>
+<p>Start at the first drawer. Each drop stands on its own. Save the piece at the bottom of the page. On days 7, 14, and 21 the pieces spell a word.</p>
 <p><a href="d01.html">Drop 01 &rarr;</a></p>
 <footer><span>North</span><span>Day 01</span></footer>
 </div>
